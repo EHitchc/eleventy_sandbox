@@ -1,0 +1,23 @@
+{
+  "name": "11ty-sandbox",
+  "version": "1.0.0",
+  "description": "11ty sandbox project",
+  "main": "index.js",
+  "author": "Ethan Hitchcock",
+  "license": "MIT",
+  "scripts": {
+    "compile": "npx @11ty/eleventy",
+    "compile:scss": "npx sass skeleton.scss src/style/css/skeleton.css",
+    "watch": "chokidar \"**/*.scss\" -i \"node_modules/**\" -c \"yarn run compile:scss\"",
+    "clean:site": "rm -fR _site",
+    "start": "yarn run clean:site && npx @11ty/eleventy --serve",
+    "start:dev": "concurrently -n SCSS,11TY -c magenta,cyan \"yarn run watch\" \"yarn run start\""
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^7.0.0",
+    "normalize-scss": "^7.0.1",
+    "skeleton-sass-official": "^4.0.0"
+  }
+}
